@@ -1,7 +1,7 @@
 export const profile = {
   name: "王忠仁",
   // title: "软件工程本科在读 · 全栈开发+Agent",
-  title: "软件开发助理",
+  title: "软件开发",
   tagline:
     "我喜欢把想法做成真正能用的产品 —— 从需求设计、前后端开发到部署上线，独立完成全流程。",
   socials: [
