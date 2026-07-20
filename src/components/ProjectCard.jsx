@@ -1,8 +1,8 @@
-import Tag from './Tag'
-import { ArrowUpRightIcon } from './Icons'
+import Tag from "./Tag";
+import { ArrowUpRightIcon } from "./Icons";
 
 export default function ProjectCard({ project }) {
-  const { title, period, href, description, tags } = project
+  const { title, period, href, description, tags } = project;
 
   return (
     <li className="mb-12">
@@ -36,5 +36,5 @@ export default function ProjectCard({ project }) {
         </div>
       </div>
     </li>
-  )
+  );
 }

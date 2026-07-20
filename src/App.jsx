@@ -1,31 +1,31 @@
-import { useEffect, useState } from 'react'
-import Spotlight from './components/Spotlight'
-import Sidebar from './components/Sidebar'
-import Section from './components/Section'
-import ProjectCard from './components/ProjectCard'
-import Tag from './components/Tag'
-import { about, projects, skills, navItems } from './data'
+import { useEffect, useState } from "react";
+import Spotlight from "./components/Spotlight";
+import Sidebar from "./components/Sidebar";
+import Section from "./components/Section";
+import ProjectCard from "./components/ProjectCard";
+import Tag from "./components/Tag";
+import { about, projects, skills, navItems } from "./data";
 
 function useActiveSection() {
-  const [active, setActive] = useState(navItems[0].id)
+  const [active, setActive] = useState(navItems[0].id);
 
   useEffect(() => {
     const onScroll = () => {
-      let current = navItems[0].id
+      let current = navItems[0].id;
       for (const { id } of navItems) {
-        const el = document.getElementById(id)
+        const el = document.getElementById(id);
         if (el && el.getBoundingClientRect().top <= window.innerHeight * 0.35) {
-          current = id
+          current = id;
         }
       }
-      setActive(current)
-    }
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+      setActive(current);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
-  return active
+  return active;
 }
 
 function About() {
@@ -39,7 +39,7 @@ function About() {
         ))}
       </div>
     </Section>
-  )
+  );
 }
 
 function Projects() {
@@ -51,7 +51,7 @@ function Projects() {
         ))}
       </ol>
     </Section>
-  )
+  );
 }
 
 function Skills() {
@@ -71,64 +71,64 @@ function Skills() {
         ))}
       </ol>
     </Section>
-  )
+  );
 }
 
 function Footer() {
-  return (
-    <footer className="max-w-md pb-16 text-sm text-slate sm:pb-0">
-      <p>
-        设计灵感来自{' '}
-        <a
-          href="https://brittanychiang.com"
-          target="_blank"
-          rel="noreferrer noopener"
-          className="font-medium text-light-slate transition-colors hover:text-accent"
-        >
-          Brittany Chiang
-        </a>
-        ，使用{' '}
-        <a
-          href="https://react.dev"
-          target="_blank"
-          rel="noreferrer noopener"
-          className="font-medium text-light-slate transition-colors hover:text-accent"
-        >
-          React
-        </a>{' '}
-        与{' '}
-        <a
-          href="https://tailwindcss.com"
-          target="_blank"
-          rel="noreferrer noopener"
-          className="font-medium text-light-slate transition-colors hover:text-accent"
-        >
-          Tailwind CSS
-        </a>{' '}
-        构建，部署于{' '}
-        <a
-          href="https://pages.cloudflare.com"
-          target="_blank"
-          rel="noreferrer noopener"
-          className="font-medium text-light-slate transition-colors hover:text-accent"
-        >
-          Cloudflare Pages
-        </a>
-        。
-      </p>
-    </footer>
-  )
+  // return (
+  //   <footer className="max-w-md pb-16 text-sm text-slate sm:pb-0">
+  //     <p>
+  //       设计灵感来自{" "}
+  //       <a
+  //         href="https://brittanychiang.com"
+  //         target="_blank"
+  //         rel="noreferrer noopener"
+  //         className="font-medium text-light-slate transition-colors hover:text-accent"
+  //       >
+  //         Brittany Chiang
+  //       </a>
+  //       ，使用{" "}
+  //       <a
+  //         href="https://react.dev"
+  //         target="_blank"
+  //         rel="noreferrer noopener"
+  //         className="font-medium text-light-slate transition-colors hover:text-accent"
+  //       >
+  //         React
+  //       </a>{" "}
+  //       与{" "}
+  //       <a
+  //         href="https://tailwindcss.com"
+  //         target="_blank"
+  //         rel="noreferrer noopener"
+  //         className="font-medium text-light-slate transition-colors hover:text-accent"
+  //       >
+  //         Tailwind CSS
+  //       </a>{" "}
+  //       构建，部署于{" "}
+  //       <a
+  //         href="https://pages.cloudflare.com"
+  //         target="_blank"
+  //         rel="noreferrer noopener"
+  //         className="font-medium text-light-slate transition-colors hover:text-accent"
+  //       >
+  //         Cloudflare Pages
+  //       </a>
+  //       。
+  //     </p>
+  //   </footer>
+  // );
 }
 
 export default function App() {
-  const active = useActiveSection()
+  const active = useActiveSection();
 
   return (
     <div className="relative">
       <Spotlight />
       <div className="mx-auto min-h-screen max-w-6xl px-6 py-12 md:px-12 md:py-20 lg:flex lg:justify-between lg:gap-4 lg:px-24 lg:py-0">
         <Sidebar active={active} />
-        <main id="content" className="pt-24 lg:w-1/2 lg:py-24">
+        <main id="content" className="pt-24 lg:w-2/3 lg:py-24">
           <About />
           <Projects />
           <Skills />
@@ -136,5 +136,5 @@ export default function App() {
         </main>
       </div>
     </div>
-  )
+  );
 }
