@@ -65,7 +65,7 @@ export const projects = [
   {
     title: "优衣库价格追踪系统",
     period: "2025.10 — 2026.02",
-    href: "https://untrack.bugworld.dev",
+    href: "https://unitrack.bugworld.dev",
     description:
       "为解决用户无法及时获知 UNIQLO 商品价格变动和库存更新的痛点，独立开发的全栈商品追踪应用。参考 HTTP ETag 协商缓存的思路，对抓取到的商品关键字段拼接后计算 MD5 摘要作为自定义变更标识，避免无意义数据重复落库；新旧快照逐字段对比，生成 JSON 结构化差异写入 ChangeEvent 表；集成 NextAuth（Credentials Provider + JWT Session），密码通过 bcrypt 哈希存储；编写多阶段 Dockerfile 实现容器化，一键部署到生产环境。",
     tags: [
