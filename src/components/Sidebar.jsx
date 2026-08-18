@@ -1,8 +1,8 @@
-import { profile } from '../data'
-import Nav from './Nav'
-import SocialIcons from './SocialIcons'
+import { profile } from "../data";
+import Nav from "./Nav";
+import SocialIcons from "./SocialIcons";
 
-export default function Sidebar({ active }) {
+export default function Sidebar({ active, activeProjectId }) {
   return (
     <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-24">
       <div>
@@ -13,9 +13,9 @@ export default function Sidebar({ active }) {
           {profile.title}
         </h2>
         <p className="mt-4 max-w-xs leading-normal">{profile.tagline}</p>
-        <Nav active={active} />
+        <Nav active={active} activeProjectId={activeProjectId} />
       </div>
       <SocialIcons />
     </header>
-  )
+  );
 }

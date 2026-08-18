@@ -8,24 +8,36 @@ import { about, projects, skills, navItems } from "./data";
 
 function useActiveSection() {
   const [active, setActive] = useState(navItems[0].id);
+  const [activeProjectId, setActiveProjectId] = useState(null);
 
   useEffect(() => {
     const onScroll = () => {
+      const threshold = window.innerHeight * 0.35;
+
       let current = navItems[0].id;
       for (const { id } of navItems) {
         const el = document.getElementById(id);
-        if (el && el.getBoundingClientRect().top <= window.innerHeight * 0.35) {
+        if (el && el.getBoundingClientRect().top <= threshold) {
           current = id;
         }
       }
       setActive(current);
+
+      let currentProject = null;
+      for (const { id } of projects) {
+        const el = document.getElementById(`project-${id}`);
+        if (el && el.getBoundingClientRect().top <= threshold) {
+          currentProject = id;
+        }
+      }
+      setActiveProjectId(currentProject);
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  return active;
+  return { active, activeProjectId };
 }
 
 function About() {
@@ -121,13 +133,13 @@ function Footer() {
 }
 
 export default function App() {
-  const active = useActiveSection();
+  const { active, activeProjectId } = useActiveSection();
 
   return (
     <div className="relative">
       <Spotlight />
       <div className="mx-auto min-h-screen max-w-6xl px-6 py-12 md:px-12 md:py-20 lg:flex lg:justify-between lg:gap-4 lg:px-24 lg:py-0">
-        <Sidebar active={active} />
+        <Sidebar active={active} activeProjectId={activeProjectId} />
         <main id="content" className="pt-24 lg:w-2/3 lg:py-24">
           <About />
           <Projects />

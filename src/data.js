@@ -25,6 +25,7 @@ export const about = [
 
 export const projects = [
   {
+    id: "beanbot",
     title: "BeanBot · 智能记账机器人",
     period: "2026.04 — 至今",
     href: "https://github.com/Fluxwang/BeanBot",
@@ -33,6 +34,7 @@ export const projects = [
     tags: ["LLM", "RAG", "Embedding API", "SQLite", "Beancount"],
   },
   {
+    id: "tiktok-analytics",
     title: "TikTok 达人营销智能分析工具",
     period: "2026.05 — 至今",
     href: "https://tk.bugworld.dev",
@@ -48,6 +50,7 @@ export const projects = [
     ],
   },
   {
+    id: "file-upload",
     title: "文件上传系统",
     period: "2025.10 — 2025.12",
     href: "https://r2drop.bugworld.dev",
@@ -63,6 +66,7 @@ export const projects = [
     ],
   },
   {
+    id: "uniqlo-tracker",
     title: "优衣库价格追踪系统",
     period: "2025.10 — 2026.02",
     href: "https://unitrack.bugworld.dev",
