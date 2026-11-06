@@ -9,9 +9,6 @@ export default function Sidebar({ active, activeProjectId }) {
         <h1 className="text-4xl font-bold tracking-tight text-lightest-slate sm:text-5xl">
           {profile.name}
         </h1>
-        <h2 className="mt-3 text-lg font-medium tracking-tight text-lightest-slate sm:text-xl">
-          {profile.title}
-        </h2>
         <p className="mt-4 max-w-xs leading-normal">{profile.tagline}</p>
         <Nav active={active} activeProjectId={activeProjectId} />
       </div>

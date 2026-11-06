@@ -1,7 +1,5 @@
 export const profile = {
   name: "王忠仁",
-  // title: "软件工程本科在读 · 全栈开发+Agent",
-  title: "软件开发",
   tagline:
     "我喜欢把想法做成真正能用的产品 —— 从需求设计、前后端开发到部署上线，独立完成全流程。",
   socials: [
@@ -25,61 +23,40 @@ export const about = [
 
 export const projects = [
   {
-    id: "beanbot",
-    title: "BeanBot · 智能记账机器人",
-    period: "2026.04 — 至今",
-    href: "https://github.com/Fluxwang/BeanBot",
+    id: "echosage",
+    title: "EchoSage · 直播翻译与 TikTok 视频分析",
+    period: "持续迭代 · 已有用户使用",
+    href: "https://github.com/Fluxwang/EchoSage",
     description:
-      "为解决 Beancount 纯文本记账门槛高、手工录入繁琐的痛点，开发的基于自然语言的智能记账机器人。采用分层架构（Gateway → Service → Controller）组织代码，职责边界清晰；基于 mtime 实现账本热重载，避免频繁全量解析；集成 Embedding API 构建 RAG 管道，将历史交易条目向量化存储于 SQLite，实现基于语义相似度的账户自动推断。用户可用自然语言指令添加交易、查询账目、克隆历史条目。",
-    tags: ["LLM", "RAG", "Embedding API", "SQLite", "Beancount"],
+      "围绕用户观看外语直播、理解与分析 TikTok 达人内容的需求，开发并持续迭代 Chrome 扩展，已有用户实际使用。整合标签页音频捕获、流式语音识别与端侧翻译，以悬浮双语字幕呈现直播内容；为 TikTok 视频提供字幕翻译、内容总结和脚本生成工作区。通过 Manifest V3 Service Worker 协调会话，使用离屏文档处理音频，并加入静音断连和会话时长限制，控制转写费用。",
+    tags: ["Chrome MV3", "JavaScript", "AssemblyAI", "Gemini Nano", "Web Audio"],
   },
   {
-    id: "tiktok-analytics",
-    title: "TikTok 达人营销智能分析工具",
-    period: "2026.05 — 至今",
-    href: "https://tk.bugworld.dev",
+    id: "ledgersage",
+    title: "LedgerSage · 对话式记账应用",
+    period: "持续迭代",
+    href: "https://github.com/Fluxwang/LedgerSage",
     description:
-      '为跨境电商运营者打造的 TikTok 带货视频分析工具，实现"粘贴链接 → 自动出双语字幕 → AI 多维度分析报告"全流程自动化。通过 MediaRecorder 捕获整段音频一次性发送至 Whisper，分别请求源语言转录与中文翻译，合并生成带时间戳的双语字幕；串联全量转录文本与结构化 Prompt，输出概念、视频结构、爆点话术、达人建议、追问 AI 五维分析。所有第三方 API 均通过 Next.js API Routes 服务端代理转发，密钥零暴露。相比人工完成同等工作效率提升超 80%。',
-    tags: [
-      "Next.js 16",
-      "React 19",
-      "TypeScript",
-      "Tailwind CSS",
-      "Whisper API",
-      "LLM",
-    ],
-  },
-  {
-    id: "file-upload",
-    title: "文件上传系统",
-    period: "2025.10 — 2025.12",
-    href: "https://r2drop.bugworld.dev",
-    description:
-      "为解决传统文件上传系统服务器压力大、上传速度慢的问题，独立开发的支持大文件直传、多用户隔离的文件管理平台。核心是绕过服务器中转：设计预签名 URL 工作流（前端请求签名 → 客户端直传 R2 → 异步更新列表），把上传流量彻底从服务器带宽里摘出去。采用 Next.js 15 App Router 架构，用 Server Components 优化首屏加载；封装 useFileUpload / useFileOperations 自定义 Hook 统一处理上传进度、错误重试和批量操作逻辑；集成 NextAuth.js 实现 JWT 会话管理，30 天免登录并在 API 路由层统一鉴权。编写 Dockerfile 容器化并部署到生产环境。相比传统服务器中转方案，上传性能提升 80%。",
-    tags: [
-      "Next.js 15",
-      "React",
-      "TypeScript",
-      "NextAuth.js",
-      "AWS S3",
-      "Prisma",
-    ],
+      "为减少 Beancount 手工录入成本，开发从 React 对话界面到 FastAPI 后端的记账应用，支持自然语言记账、账目查询、预算和统计报表。使用 LangGraph 编排意图识别、交易提取与多轮追问，信息不足时先补充确认；写入前展示可编辑的分录预览，确认后提交到账本。每位用户拥有独立账本，以 Beancount 文件作为账务数据来源，用 Git 记录写入并支持撤销，查询与报表采用确定性计算。",
+    tags: ["Python", "FastAPI", "LangGraph", "React", "Beancount", "SQLite"],
   },
   {
     id: "uniqlo-tracker",
-    title: "优衣库价格追踪系统",
+    title: "UniTrack · 优衣库商品追踪",
     period: "2025.10 — 2026.02",
-    href: "https://unitrack.bugworld.dev",
+    href: "https://github.com/Fluxwang/UniTrack",
     description:
-      "为解决用户无法及时获知 UNIQLO 商品价格变动和库存更新的痛点，独立开发的全栈商品追踪应用。参考 HTTP ETag 协商缓存的思路，对抓取到的商品关键字段拼接后计算 MD5 摘要作为自定义变更标识，避免无意义数据重复落库；新旧快照逐字段对比，生成 JSON 结构化差异写入 ChangeEvent 表；集成 NextAuth（Credentials Provider + JWT Session），密码通过 bcrypt 哈希存储；编写多阶段 Dockerfile 实现容器化，一键部署到生产环境。",
-    tags: [
-      "Next.js 15",
-      "React 19",
-      "TypeScript",
-      "NextAuth.js",
-      "Prisma",
-      "Docker",
-    ],
+      "为方便查看优衣库商品价格和库存变化，开发集用户登录、商品跟踪与管理面板于一体的全栈应用。用户通过商品链接或编码添加跟踪项，后端抓取商品数据并保存历史快照，通过新旧快照的差异检测记录价格和库存更新。使用 Next.js App Router 实现页面与 API，结合 Prisma 管理数据、NextAuth 处理登录，并为变化检测逻辑编写单元测试。",
+    tags: ["Next.js", "TypeScript", "Prisma", "NextAuth", "Vitest"],
+  },
+  {
+    id: "file-upload",
+    title: "R2Drop · 私有文件管理",
+    period: "2025.10 — 2025.12",
+    href: "https://github.com/Fluxwang/R2Drop",
+    description:
+      "开发基于 Cloudflare R2 的私有文件管理应用，覆盖注册登录、拖拽上传、上传进度、文件列表及批量下载与删除。服务端生成预签名 URL，由浏览器直接上传到对象存储，减少文件流量经过应用服务器的带宽开销。使用 NextAuth 管理会话、Prisma 与 PostgreSQL 保存用户信息；文件 API 同时校验登录状态与对象归属，限制用户只能访问自己的文件。",
+    tags: ["Next.js", "TypeScript", "Cloudflare R2", "NextAuth", "PostgreSQL", "Prisma"],
   },
 ];
 
@@ -96,7 +73,7 @@ export const skills = [
   },
   {
     category: "独立交付",
-    items: ["Docker", "Next.js", "React", "TypeScript", "Tailwind CSS"],
+    items: ["Docker", "FastAPI", "Next.js", "React", "TypeScript", "Tailwind CSS"],
     note: "从需求设计、数据建模到部署上线的全流程独立交付能力",
   },
   {
